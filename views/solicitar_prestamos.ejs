@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modulo de Solicitud de Material</title>
+    <link href='../css/bootstrap.min.css' rel='stylesheet'>
+    <link href='../css/estilo_sol.css' rel='stylesheet'>
+
+</head>
+<body>
+    <nav class="navbar navbar-dark bg-dark">
+        <a class="navbar-brand">Modulo de Solcitud de Libros</a>
+        <form class="form-inline">
+          <input class="form-control mr-sm-2" type="search" id="titulo" placeholder="Titulo o Autor" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Consultar</button>
+        </form>
+      </nav>
+
+      <div class="accordion" id="accordionExample">
+        <div class="card">
+          <div class="card-header" id="headingOne">
+            <h2 class="mb-0">
+              <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                Libros Disponibles
+              </button>
+            </h2>
+          </div>
+      
+          <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+            <div class="card-body">
+              
+              <div class="wrapper">
+                <div class="main_container">
+                  <div class="item">
+                    <div class="form-row">
+                      <div class="form-group col-md-12">
+                        <div id="listar_libros_disponibles" title="Lista de Ejemplares">
+                          <div id="Listar_libros"></div>
+                      </div>
+                        
+                      </div>
+                      
+                    </div>
+        
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header" id="headingTwo">
+            <h2 class="mb-0">
+              <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                Mis Peticiones
+              </button>
+            </h2>
+          </div>
+          <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+            <div class="card-body">
+              <div class="form-row">
+                <div class="form-group col-md-12">
+                  <div id="listar_solicitudes" title="Lista de mis solicitudes">
+                    <div id="Listar_solicitud"></div>
+                </div>
+                  
+                </div>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+      
+      
+
+      
+      
+      
+    
+</body>
+    <script src="../js/all.js"></script>    
+    <script src="../js/jquery-3.4.1.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/solicitar_prestamo.js"></script>
+</html>

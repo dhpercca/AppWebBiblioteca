@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+    <title>Registrar Libros</title>
+    <link href='../css/bootstrap.min.css' rel='stylesheet'>
+    <link href='../css/style.css' rel='stylesheet'>
+     
+</head>
+
+<body>   
+    <div class="wrapper">
+        <div class="top_navbar">
+            <div class="hamburger">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+
+            <div class="top_menu">
+                <div class="logo">SISTEMA DE BIBLIOTECA</div>
+                <ul>                   
+                </ul>
+            </div>
+        </div>       
+        <div class="slidebar">
+            <ul>
+                <li class="submenu" id="submenu"><a href="#">
+                    <span class="icon">
+                        <i class="fas fa-book" aria-hidden="true"></i>
+                        
+                    </span>
+                    <span class="title">Gestionar Libros</span> <span class="caret fas fa-angle-down"></span>
+                </a>
+                <ul class="children">
+                    <li><a href="../sistema_biblioteca/registrar_libro"><span class="icon">
+                        <i class="fas fa-swatchbook" aria-hidden="true"></i>
+                    </span>Registar libros </a></li>
+                    
+                </ul>
+            </li>
+                <li><a href="../sistema_biblioteca/validar_prestamos">
+                    <span class="icon">
+                        <i class="fas fa-book-reader" aria-hidden="true"></i>
+                    </span>
+                    <span class="title">Prestamos</span>
+
+                </a></li>
+                
+                <li class="submenu" id="submenu">
+                    <a href="#">
+                        <span class="icon">
+                            <i class="fas fa-book" aria-hidden="true"></i>
+                        </span>
+                        <span class="title">Reportes</span>
+                        <span class="caret fas fa-angle-down"> </span>
+                    </a>
+                    <ul class="children">
+                        <li>
+                            <a href="../reportes/reporte_ranking">
+                            <span class="icon">
+                                <i class="fas fa-swatchbook" aria-hidden="true"></i>
+                            </span>Generar Ranking</a>
+                        </li> 
+                        <li>
+                            <a href="../reportes/reportes_carnets">
+                            <span class="icon">
+                                <i class="fas fa-swatchbook" aria-hidden="true"></i>
+                            </span>Reporte de Carnets</a>
+                        </li>
+                        <li>
+                            <a href="../reportes/reportes">
+                            <span class="icon">
+                                <i class="fas fa-swatchbook" aria-hidden="true"></i>
+                            </span>Reporte de Material</a>
+                        </li>
+                        <li>
+                            <a href="../reportes/reportes">
+                            <span class="icon">
+                                <i class="fas fa-swatchbook" aria-hidden="true"></i>
+                            </span>Reporte de prestamo</a>
+                        </li>                   
+                    </ul>
+                </li>
+
+
+                <li><a href="../sistema_biblioteca/frmcarnet">
+                    <span class="icon">
+                        <i class="fa fa-address-card" aria-hidden="true"></i>
+                    </span>
+                    <span class="title">Generar Carnet</span>
+
+                </a></li>
+
+                <li><a href="">
+                    <span class="icon">
+                        <i class="as fas fa-user-tie" aria-hidden="true"></i>
+                    </span>
+                    <span class="title">Administracion</span>
+
+                </a></li>
+            </ul>
+        </div>
+        <div class="main_container">
+            
+            <div class="item1">
+                <span class="sub_title">REGISTRO DE EJEMPLARES</span>
+            </div>
+            
+            <div class="item">
+                <div class="form-row">
+                    <div class="form-group col-md-4" >
+                        <select class="form-control" id="autor" name="autor"></select>
+                    </div>
+                    <div class="form-group col-md-4" >
+                        <select class="form-control" id="editorial" name="editorial"></select>
+                    </div>
+                                            
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-4" >
+                        <select class="form-control" id="categoria" name="categoria"></select>
+                    </div>
+                    <div class="form-group col-md-4" >
+                        <input class="form-control" type="text" name="descripcion" id="descripcion" placeholder="Descripcion">
+                    </div>
+                        
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-4" >
+                        <input class="form-control" type="text" name="titulo" id="titulo" placeholder="Titulo">
+                    </div>
+                    <div class="form-group col-md-2" >
+                        <div> &nbsp;Id</div>
+                            
+                    </div>
+                    <div class="form-group col-md-2" >
+                        <div  id='idejemplar_libro'>0</div>
+                    </div>
+                        
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-4" >
+                        <button type="button" class="btn btn-primary" onclick="guardar_ejemplar_libro()">Guardar Ejemplar</button>
+                    </div>
+                    <div class="form-group col-md-4" >
+                        <button type="button" class="btn btn-success" onclick="limpiaCampos()">Limpiar</button>
+                    </div>
+                    <div class="form-group col-md-4" >
+                        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#comp_ejemplar" onclick=""><i class="fa fa-plus-circle" aria-hidden="true"></i>Complemento Ejemplar</button>
+                    </div>
+
+                </div>
+                
+            </div>
+
+            <!-- Modal complemento de ejem -->
+<div class="modal fade" id="comp_ejemplar" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel"><i class="fa fa-plus-circle" aria-hidden="true"></i> Agregar Autor, Editorial o Categoria</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <div class="form-row">
+                <div class="form-group col-md-6" >
+                    <input class="form-control" type="text" id="descripcion_autor" name="descripcion_autor" placeholder="Autor">
+                </div>
+                <div class="form-group col-md-6" >
+                    <button type="button" class="btn btn-primary" onclick="guardar_autor()">Guardar Autor</button>
+                </div>
+                    
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-6" >
+                    <input class="form-control" type="text" id="descripcion_editorial" name="descripcion_editorial" placeholder="Editorial">
+                </div>
+                <div class="form-group col-md-6" >
+                    <button type="button" class="btn btn-primary" onclick="guardar_editorial()">Guardar Editorial</button>
+                </div>
+                    
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-6" >
+                    <input class="form-control" type="text" id="descripcion_categoria" name="descripcion_categoria" placeholder="Categoria">
+                </div>
+                <div class="form-group col-md-6" >
+                    <button type="button" class="btn btn-primary" onclick="guardar_categoria()">Guardar Categoria</button>
+                </div>
+                    
+            </div>
+          
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+            <!-- Modal -->
+            <div class="modal fade" id="modallibro" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Registro de Libros</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-row">
+                            <div class="form-group col-md-6" >
+                                <select class="form-control" id="estado_libro" name="estado_libro"></select>
+                            </div>
+                            <div class="form-group col-md-6" >
+                                <select class="form-control" id="ejemplar_libro" name="ejemplar_libro"></select>
+                            </div>
+                                
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-6" >
+                                <input class="form-control" type="date" name="fecha_compra" id="fecha_compra" placeholder="Fecha de Compra">
+                            </div>
+                            <div class="form-group col-md-6" >
+                                <input class="form-control" type="text"  name="precio" id="precio" placeholder="Precio">
+                            </div>
+                                
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-3" >
+                                <div> &nbsp;ID</div>
+                                    
+                            </div>
+                            <div class="form-group col-md-3" >
+                                <div  id='codlibro'>0</div>
+                            </div>
+
+                            <div class="form-group col-md-6" >
+                                <input class="form-control" type="text"  name="codigo" id="codigo" placeholder="Codigo">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" onclick="guardar_libro()">Guardar</button>
+                    <button type="button" class="btn btn-success" onclick=" buscar_libroxcodigo()">Buscar</button>
+                    <button type="button" class="btn btn-danger" onclick="eliminar_libro()">Eliminar</button>
+                    </div>
+                </div>
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="form-row">
+                    <div class="form-group col-md-4" >
+                        
+                        <input class="form-control" type="text"  name="buscar_t" id="buscar_t" placeholder="Ingrese un titulo">
+                    </div>
+                    <div class="form-group col-md-6" >
+                        <button type="button" class="btn btn-success" onclick="buscar_titulo(0)">Buscar</button>
+                    </div>
+                    
+
+
+                </div>
+                
+                <div class="form-row">
+                    <div id="listar_ejemplar" title="Lista de Ejemplares">
+                        <div id="ListaDetalle"></div> 
+                    </div>
+                </div>
+                
+            </div>
+                               
+            
+        </div>
+        
+    
+    </div>
+    
+</body>
+    
+    <script src="../js/all.js"></script>    
+    <script src="../js/jquery-3.4.1.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/frmlibro.js"></script>
+   
+  
+    
+
+
+</html>
