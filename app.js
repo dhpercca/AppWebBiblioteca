@@ -77,7 +77,7 @@ app.get('/reportes/reportes',reportes.reportes);
 app.get('/reportes/reporte_ranking',reportes.reporte_ranking);
 app.post('/reportes/listarranking',reportes.listarranking);
 app.get('/reportes/reporte_carnets',reportes.reporte_carnets);
-//app.post('/reportes/generar_ranking',reportes.generar_ranking);
+//app.get('/reportes/generar_ranking',reportes.generar_ranking);
 //app.get('/reportes/validar_ranking',reportes.validar_ranking);
 //app.get('/clientes',clientes.list)
 app.use(app.router);

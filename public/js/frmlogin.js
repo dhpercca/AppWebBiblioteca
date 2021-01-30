@@ -22,7 +22,14 @@ function logear(){
 				if(data.length>0)
 				{
 					alert("Bienvenido al sistema.....")
-					location.href ="../sistema_biblioteca/menu_principal";
+					if(data[0].tipo_usuario==1 || data[0].tipo_usuario==2)
+					{
+						location.href ="../sistema_biblioteca/menu_principal";
+					}
+					if(data[0].tipo_usuario==3){
+						location.href ="../sistema_biblioteca/solicitar_prestamos";
+					}
+
 					
 				}
 				else{

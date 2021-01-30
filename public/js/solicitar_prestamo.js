@@ -126,5 +126,34 @@ function cargar_mis_solicitudes()
 	});
 
 }
+function buscarxtitulo_autor(para)
+{	
+	if(para=='0')
+	{
+		titulo=document.getElementById("titulo").value;	
+	}
+	
+	if(titulo)
+	{
+		$.ajax({
+			type:'post',
+			url:'../sistema_biblioteca/buscarxtitulo_autor',
+			dataType:'json',
+			data:"titulo="+titulo,
+			success:function(html)
+			{		
+				sol=html;
+				tablalibros_disponibles(sol);
+				
+			}
+		});
+		
+	}
+	else{
+		alert("Ingrese un titulo o autor....")
+	}
+	
+}
+
 
 

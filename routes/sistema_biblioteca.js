@@ -368,7 +368,7 @@ exports.actualizar_libro = function(req,res){
     
   var input = JSON.parse(JSON.stringify(req.body));
   //var id = req.params.id;
-  idlibro=input.idlibro;
+  codigo=input.codigo;
   //console.log(idcliente);
   req.getConnection(function (err, connection) {
       
@@ -378,12 +378,13 @@ exports.actualizar_libro = function(req,res){
         fecha_compra: input.fecha_compra,
         precio: input.precio      
       };
-      connection.query("UPDATE libro set ? WHERE idlibro = ? ",[data,idlibro], function(err, rows)
+      connection.query("UPDATE libro set ? WHERE codigo = ? ",[data,codigo], function(err, rows)
       {
         if (err)
             console.log("Error Updating : %s ",err );
             //res.redirect('/customers');
       });
+	  console.log("UPDATE libro set ? WHERE idlibro = ? ",[data,codigo])
   
   });
 };
@@ -488,3 +489,21 @@ exports.listar_libros_disponibles = function(req, res){
     });
   
 };
+exports.buscarxtitulo_autor = function(req, res){
+  //var dni = req.params.dni;	
+  var input = JSON.parse(JSON.stringify(req.body));
+  req.getConnection(function(err,connection){
+       
+        titulo= input.titulo,
+        autor= input.titulo
+        var query = connection.query('select libro.codlibro,libro.codigo,ejemplar_libro.titulo, autor.descripcion as autor,editorial.descripcion as editorial ,categoria.descripcion as categoria from ((((ejemplar_libro inner join autor on ejemplar_libro.autor=autor.idautor)  inner join editorial on ejemplar_libro.editorial=editorial.ideditorial) inner join categoria on ejemplar_libro.categoria=categoria.idcategoria) inner join libro on ejemplar_libro.idejemplar_libro=libro.ejemplar_libro) where libro.estado_libro="1" and (ejemplar_libro.titulo=? or autor.descripcion=?);',[titulo,autor],function(err,rows)
+        {
+            if(err)
+                console.log("Error Selecting : %s ",err );
+        json = res.json(rows);
+        //res.json(rows.length);
+        });
+  });
+};      
+       
+

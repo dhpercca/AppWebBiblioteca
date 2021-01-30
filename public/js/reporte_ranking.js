@@ -10,8 +10,8 @@ function main(){
 $(document).ready(function(){
 	
     cargar_ranking();
-    //generar_ranking();
-    //validar_ranking();
+    generar_ranking();
+    validar_ranking();
 
     $(".hamburger").click(function(){
         $(".wrapper").toggleClass("collapse");
@@ -64,14 +64,9 @@ function tablaranking(data)
    
    
 }
-/*
+
 function generar_ranking(){
-    fecIni=document.getElementById(fecini).value;
-    fecFin=document.getElementById(fecfin).value;
-    alert("Fecha de inicio: ",fecIni);
-    alert("Fecha de final: ",fecFin);
-    
-    //validar_ranking();
+    validar_ranking();
 }
 
 function validar_ranking(){
@@ -123,4 +118,4 @@ function validar_ejemplar()
 	else
 		alert("Falta ingresar: "+msg+"... ");
 	return new Array(msg,cad,action);
-}*/
+}
